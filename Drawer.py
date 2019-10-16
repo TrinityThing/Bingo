@@ -1,6 +1,5 @@
 import sys
-from random import shuffle
-from copy import deepcopy
+from random import sample
 
 
 class Drawer:
@@ -41,11 +40,9 @@ class Drawer:
                 "Highlighty"]
 
     def draw(self):
-        packetStack = deepcopy(self.__options)
-        shuffle(packetStack)
-        items = {}
-        for player in self.__players:
-            items[player] = packetStack.pop();
+        n_players = len(self.__players)
+        shuffled = sample(self.__options, k=n_players)
+        items = {p: o for p, o in zip(self.__players, shuffled)}
 
         return items
 
