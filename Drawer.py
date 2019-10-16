@@ -25,20 +25,20 @@ class Drawer:
                 "Legacy Break",
                 "Product care",
                 "A ja mam pytanie",
-                "impediment",
+                "Impediment",
                 "MJE",
                 "Top Prio",
                 "Delivery",
                 "Improvement",
                 "Proces",
                 "Way of working",
-                "Value for money",
                 "Robimy Daily",
                 "Mitygacja",
                 "Inwestygacja",
                 "Value for Money",
                 "Definition of Done",
-                "Testy Automatyczne"]
+                "Testy Automatyczne",
+                "Highlighty"]
 
     def draw(self):
         packetStack = deepcopy(self.__options)
