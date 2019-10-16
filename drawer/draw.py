@@ -3,8 +3,13 @@ from random import sample
 
 
 class Drawer:
+    """ This comes when you are tired of your entire life """
 
-    def __init__(self, players, options=None):
+    def __init__(self, players: list, options: list = None):
+        """
+        :arg players array of players Eg. ["p1", "p2"]
+        :arg options array of possibilities to be draw
+        """
         self.__players = players
         self.__options = options
         if self.__options is None:
