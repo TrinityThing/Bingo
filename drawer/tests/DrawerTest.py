@@ -13,7 +13,11 @@ class DrawerTestCase(unittest.TestCase):
 
     def test_simple_drawing(self):
         drawer = Drawer(["Player1"], ["Option1"])
-        self.assertEqual({"Player1" : "Option1"}, drawer.draw())
+        self.assertEqual({"Player1": "Option1"}, drawer.draw())
+
+    def test_no_options_works(self):
+        drawer = Drawer(["Player"])
+        self.assertGreater(len(drawer.draw()), 0)
 
 
 if __name__ == '__main__':
