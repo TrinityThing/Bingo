@@ -19,6 +19,11 @@ class DrawerTestCase(unittest.TestCase):
         drawer = Drawer(["Player"])
         self.assertGreater(len(drawer.draw()), 0)
 
+    def test_same_seed_twice(self):
+        drawer = Drawer(["Player1", "Player2"], ["Option1", "Option2", "Option3"])
+        result = drawer.draw()
+        result_second = drawer.draw()
+        self.assertEqual(result, result_second)
 
 if __name__ == '__main__':
     unittest.main()
