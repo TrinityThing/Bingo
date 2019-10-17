@@ -1,5 +1,7 @@
 import sys
-from random import sample
+
+from datetime import datetime
+from random import Random
 
 
 class Drawer:
@@ -12,8 +14,26 @@ class Drawer:
         """
         self.__players = players
         self.__options = options
-        if self.__options is None:
-            self.__options = self.__generate_options()
+        if self.__options is None: self.__options = self.__generate_options()
+
+    def draw(self):
+        n_players = len(self.__players)
+        shuffled = self.shuffle_pack(n_players)
+        items = {p: o for p, o in zip(self.__players, shuffled)}
+
+        return items
+
+    def shuffle_pack(self, n_players):
+        shuffled = Random(self.__generate_daily_seed()).sample(self.__options, k=n_players)
+        return shuffled
+
+    def __generate_daily_seed(self):
+        current_date = datetime.now()
+        date_format = '%d %M %Y'
+        cut_current_date = datetime.strptime(
+            '%d %d %d' % (current_date.day, current_date.month, current_date.year),
+            date_format)
+        return cut_current_date.timestamp()
 
     def __generate_options(self):
         return ["Rozumiesz",
@@ -43,13 +63,6 @@ class Drawer:
                 "Definition of Done",
                 "Testy Automatyczne",
                 "Highlighty"]
-
-    def draw(self):
-        n_players = len(self.__players)
-        shuffled = sample(self.__options, k=n_players)
-        items = {p: o for p, o in zip(self.__players, shuffled)}
-
-        return items
 
 
 def main(argv):
