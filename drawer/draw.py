@@ -46,9 +46,11 @@ class Drawer:
 
         return items
 
+
 def main(argv):
     drawer = Drawer(argv)
     print(drawer.draw())
+
 
 if __name__ == "__main__":
     sys.exit(main(["Kaj", "Adi", "Karol", "Sito", "Małcin"]))
