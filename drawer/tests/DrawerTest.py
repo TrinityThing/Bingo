@@ -1,5 +1,6 @@
 import unittest
-from Drawer import Drawer
+from drawer.draw import Drawer
+
 
 class DrawerTestCase(unittest.TestCase):
 
@@ -13,6 +14,7 @@ class DrawerTestCase(unittest.TestCase):
     def test_simple_drawing(self):
         drawer = Drawer(["Player1"], ["Option1"])
         self.assertEqual({"Player1" : "Option1"}, drawer.draw())
+
 
 if __name__ == '__main__':
     unittest.main()
