@@ -18,12 +18,12 @@ class Drawer:
 
     def draw(self):
         n_players = len(self.__players)
-        shuffled = self.shuffle_pack(n_players)
+        shuffled = self.__shuffle_pack(n_players)
         items = {p: o for p, o in zip(self.__players, shuffled)}
 
         return items
 
-    def shuffle_pack(self, n_players):
+    def __shuffle_pack(self, n_players):
         shuffled = Random(self.__generate_daily_seed()).sample(self.__options, k=n_players)
         return shuffled
 
