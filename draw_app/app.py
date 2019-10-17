@@ -8,12 +8,12 @@ app = Flask(__name__)
 
 @app.route('/draw/rest')
 def draw():
-    new_draw = global_drawer.draw()
+    drawer = Drawer(['Kaju', 'Adi', 'Mariaczi', 'Karol', 'Sito'])
+    new_draw = drawer.draw()
     return json.dumps(new_draw)
 
-
 @app.route('/draw/rest/addPoints', methods=['POST'])
-def addPoinstByName():
+def add_points_by_name():
     if request.method == 'POST':
         """ Example usage:
             curl -d '{"player":"Kaju"}' -X POST http://localhost:5000/draw/rest/addPoints
