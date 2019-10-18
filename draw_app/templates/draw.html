@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Trinity Bingo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+
+<body>
+<div class="results">
+    {% for p, q in items.items() %}
+    <div class="square">
+        <div class="content">
+            <div class="table">
+                <div class="table-cell">
+                    <p class="title">{{ p }}</p>
+                    <p class="quote">{{ q }}</p>
+                    <p class="single-result"> 0 </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</body>
+
+</html>
