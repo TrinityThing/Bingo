@@ -1,5 +1,5 @@
 import json
-from flask import Flask, request, render_template
+from flask import Flask, redirect, request, render_template, url_for
 from drawer.draw import Drawer
 from drawer.points import PointsContainer
 
@@ -13,9 +13,13 @@ def draw():
 
 
 @app.route('/')
+def index():
+    return redirect(url_for("draw_html"))
+
+
 @app.route('/draw/')
 def draw_html():
-    return render_template("draw.html", items=json.loads(draw()))
+    return render_template("draw.html", items=global_drawer.draw())
 
 
 @app.route('/draw/rest/addPoints', methods=['POST'])
@@ -35,7 +39,7 @@ def add_points_by_name():
 
         return json.dumps({"Actual Points": player_points})
     else:
-        raise Exception('This templates is gone. 405')
+        raise Exception('This template is gone. 405')
 
 
 global_drawer = Drawer(['Kaju', 'Adi', 'Mariaczi', 'Karol', 'Śto'])
