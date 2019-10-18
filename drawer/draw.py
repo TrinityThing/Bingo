@@ -1,7 +1,7 @@
-import random
 import sys
 
 from datetime import date
+from random import Random
 
 
 class Drawer:
@@ -24,8 +24,8 @@ class Drawer:
         return items
 
     def __shuffle_pack(self, n_players):
-        random.seed(self.__generate_daily_seed())
-        shuffled = random.sample(self.__options, k=n_players)
+        generator = Random(self.__generate_daily_seed())
+        shuffled = generator.sample(self.__options, k=n_players)
         return shuffled
 
     def __generate_daily_seed(self):
