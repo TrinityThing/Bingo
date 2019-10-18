@@ -1,8 +1,5 @@
-import codecs
-import configparser
 import json
-import sys
-import os
+from .config_parse import get_config
 from flask import Flask, redirect, request, render_template, url_for
 from drawer.draw import Drawer
 from drawer.points import PointsContainer
@@ -44,26 +41,6 @@ def add_points_by_name():
         return json.dumps({"Actual Points": player_points})
     else:
         raise Exception('This template is gone. 405')
-
-
-def get_config():
-    parser = configparser.ConfigParser(allow_no_value=True)
-    parser.optionxform = str
-
-    cfg_path = os.getenv("DRAW_APP_CONFIG_FILE", "config.ini")
-    cfg_file = codecs.open(cfg_path, "r", "utf8")
-    parser.read_file(cfg_file)
-
-    required_sections = ["names", "options"]
-    if not all(item in parser.sections() for item in required_sections):
-        sys.exit("Error: Missing [names] or [options] section in config file")
-
-    names = parser.options("names")
-    options = parser.options("options")
-    if len(names) > len(options):
-        sys.exit("Error: More players than available options")
-
-    return names, options
 
 
 player_names, bingo_options = get_config()
