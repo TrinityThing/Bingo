@@ -12,6 +12,7 @@ def draw():
     new_draw = drawer.draw()
     return json.dumps(new_draw)
 
+
 @app.route('/draw/rest/addPoints', methods=['POST'])
 def add_points_by_name():
     if request.method == 'POST':
