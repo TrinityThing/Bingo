@@ -1,7 +1,7 @@
+import random
 import sys
 
-from datetime import datetime
-from random import Random
+from datetime import date
 
 
 class Drawer:
@@ -24,16 +24,13 @@ class Drawer:
         return items
 
     def __shuffle_pack(self, n_players):
-        shuffled = Random(self.__generate_daily_seed()).sample(self.__options, k=n_players)
+        random.seed(self.__generate_daily_seed())
+        shuffled = random.sample(self.__options, k=n_players)
         return shuffled
 
     def __generate_daily_seed(self):
-        current_date = datetime.now()
-        date_format = '%d %M %Y'
-        cut_current_date = datetime.strptime(
-            '%d %d %d' % (current_date.day, current_date.month, current_date.year),
-            date_format)
-        return cut_current_date.timestamp()
+        current_date = date.today()
+        return current_date.toordinal()
 
     def __generate_options(self):
         return ["Rozumiesz",
