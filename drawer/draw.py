@@ -64,11 +64,3 @@ class Drawer:
                 "Testy Automatyczne",
                 "Highlighty"]
 
-
-def main(argv):
-    drawer = Drawer(argv)
-    print(drawer.draw())
-
-
-if __name__ == "__main__":
-    sys.exit(main(["Kaj", "Adi", "Karol", "Sito", "Małcin"]))
