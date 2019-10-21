@@ -30,7 +30,7 @@ and redirected to from base URL (`/`).
 
 #### Description
 
-Returns a list of daily assignments.
+Returns a list of today's assignments.
 
 #### Example response
 
