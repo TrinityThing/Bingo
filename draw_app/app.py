@@ -6,7 +6,7 @@ from drawer.points import PointsContainer
 app = Flask(__name__)
 
 
-@app.route('/draw/rest')
+@app.route('/draw/api/daily')
 def draw():
     new_draw = global_drawer.draw()
     return json.dumps(new_draw)
@@ -22,11 +22,11 @@ def draw_html():
     return render_template("draw.html", items=global_drawer.draw())
 
 
-@app.route('/draw/rest/addPoints', methods=['POST'])
+@app.route('/draw/api/points', methods=['POST'])
 def add_points_by_name():
     if request.method == 'POST':
         """ Example usage:
-            curl -d '{"player":"Kaju"}' -X POST http://localhost:5000/draw/rest/addPoints
+            curl -d '{"player":"Kaju"}' -X POST http://localhost:5000/draw/api/points
         """
         # TODO(kaj): Handle correctness of request
         points_container = PointsContainer()
