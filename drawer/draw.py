@@ -60,4 +60,3 @@ class Drawer:
                 "Definition of Done",
                 "Testy Automatyczne",
                 "Highlighty"]
-

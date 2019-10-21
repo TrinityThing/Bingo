@@ -25,5 +25,6 @@ class DrawerTestCase(unittest.TestCase):
         result_second = drawer.draw()
         self.assertEqual(result, result_second)
 
+
 if __name__ == '__main__':
     unittest.main()
