@@ -22,18 +22,33 @@ def draw_html():
     return render_template("draw.html", items=global_drawer.draw())
 
 
-@app.route('/draw/rest/addPoints', methods=['POST'])
-def add_points_by_name():
+@app.route('/draw/rest/<string:player_name>/points/add', methods=['POST'])
+def add_points_by_name(player_name):
     if request.method == 'POST':
-        """ Example usage:
-            curl -d '{"player":"Kaju"}' -X POST http://localhost:5000/draw/rest/addPoints
-        """
         # TODO(kaj): Handle correctness of request
         points_container = PointsContainer()
         points_container.set_players_and_options(global_drawer.draw())
 
-        player = request.get_json(force=True)['player']
+        player = player_name
         points_container.add_point_to_player(player)
+
+        player_points = points_container.get_points(player)
+
+        return json.dumps({"Actual Points": player_points})
+    else:
+        raise Exception('This template is gone. 405')
+
+
+@app.route('/draw/rest/<string:player_name>/points/reset', methods=['POST'])
+def reset_points_by_name(player_name):
+    if request.method == 'POST':
+        # TODO(kaj): Handle correctness of request
+        points_container = PointsContainer()
+        points_container.set_players_and_options(global_drawer.draw())
+
+        player = player_name
+
+        points_container.reset_points(player)
 
         player_points = points_container.get_points(player)
 

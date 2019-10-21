@@ -1,6 +1,7 @@
 import unittest
 from drawer.points import PointsContainer
 
+
 class PointsContainerTestCase(unittest.TestCase):
 
     def test_create_points_container(self):
