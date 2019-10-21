@@ -26,7 +26,7 @@ and redirected to from base URL (`/`).
 
 ## REST API endpoints
 
-### `GET /draw/rest/`
+### $ `GET /draw/rest/`
 
 #### Description
 
@@ -42,7 +42,7 @@ Returns a list of today's assignments.
 }
 ```
 
-### `POST /draw/rest/addPoints`
+### $ `POST /draw/rest/addPoints`
 
 #### Description
 
