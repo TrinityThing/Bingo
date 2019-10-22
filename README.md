@@ -26,7 +26,7 @@ and redirected to from base URL (`/`).
 
 ## REST API endpoints
 
-### $ `GET /draw/rest/`
+### $ `GET /draw/api/daily`
 
 #### Description
 
@@ -42,8 +42,44 @@ Returns a list of today's assignments.
 }
 ```
 
-### $ `POST /draw/rest/addPoints`
+### $ `GET /draw/api/players/<player:string>/points`
 
 #### Description
 
-Allows giving players points for completed quests.
+Returns the current score of the given player.
+
+#### Example response
+
+```json
+{
+  "Player1": 0
+}
+```
+
+### $ `POST /draw/api/players/<player:string>/points`
+
+#### Description
+
+Allows modifying a given player's score.
+Returns the player's score after the modification.
+
+#### Arguments
+
+* "action" (string)
+
+|action |result                           |
+|-------|---------------------------------|
+|"add"  |Increments the player's score    |
+|"reset"|Resets the player's score to zero|
+
+Example:
+
+`curl -X POST -d '{"action": "add"}' <app>/draw/api/players/Player1/points`
+
+#### Example response
+
+```json
+{
+  "Player1": 1
+}
+```
