@@ -1,7 +1,9 @@
 import json
+
 from flask import Flask, redirect, request, render_template, url_for
-from drawer.draw import Drawer
+
 from draw_app.models.points import PointsContainer
+from drawer.draw import Drawer
 
 app = Flask(__name__)
 
@@ -13,12 +15,17 @@ def index():
 
 @app.route('/draw/')
 def draw_html():
-    return render_template("draw.html", items=global_drawer.draw())
+    return render_template("draw.html", items=json.loads(draw()))
 
 
 @app.route('/draw/api/daily')
 def draw():
     new_draw = global_drawer.draw()
+    points_container = PointsContainer()
+
+    for p in new_draw.keys():
+        new_draw[p] = {"points": points_container.get_points(p), "quote": new_draw[p]}
+
     return json.dumps(new_draw)
 
 
@@ -32,7 +39,6 @@ def add_points_by_name(player_name):
         return json.dumps({player_name: player_points})
     elif request.method == 'POST':
         # TODO(kaj): Handle correctness of request
-
         action = request.get_json(force=True)['action']
 
         points_container = PointsContainer()
