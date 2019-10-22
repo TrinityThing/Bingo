@@ -36,9 +36,18 @@ Returns a list of today's assignments.
 
 ```json
 {
-  "Player1": "Phrase1",
-  "Player2": "Phrase2",
-  "Player3": "Phrase3"
+  "Player1": {
+    "quote": "Phrase1",
+    "points": 1
+  },
+  "Player2": {
+    "quote": "Phrase2",
+    "points": 12
+  },
+  "Player3": {
+    "quote": "Phrase3",
+    "points": 0
+  }
 }
 ```
 
@@ -74,7 +83,9 @@ Returns the player's score after the modification.
 
 Example:
 
-`curl -X POST -d '{"action": "add"}' <app>/draw/api/players/Player1/points`
+``` shell script
+curl -X POST -d '{"action": "add"}' <app>/draw/api/players/Player1/points
+```
 
 #### Example response
 

@@ -1,5 +1,3 @@
-import sys
-
 from datetime import date
 from random import Random
 
@@ -20,7 +18,6 @@ class Drawer:
         n_players = len(self.__players)
         shuffled = self.__shuffle_pack(n_players)
         items = {p: o for p, o in zip(self.__players, shuffled)}
-
         return items
 
     def __shuffle_pack(self, n_players):

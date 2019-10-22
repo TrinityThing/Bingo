@@ -4,23 +4,40 @@
 <head>
     <title>Bingo</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='draw.js') }}"></script>
 </head>
 
 <body>
 <div class="results">
-    {% for p, q in items.items() %}
-    <div class="square">
+    {% for player_name, data in items.items() %}
+        <div class="square" onclick="addPointsRequest('{{ player_name }}')">
         <div class="content">
             <div class="table">
                 <div class="table-cell">
-                    <p class="title">{{ p }}</p>
-                    <p class="quote">{{ q }}</p>
-                    <p class="single-result"> 0 </p>
+                    <p class="title">{{ player_name }}</p>
+                    <p class="quote">{{ data.quote }}</p>
+                    <p class="single-result" id="{{ player_name }}">{{ data.points }}</p>
                 </div>
             </div>
         </div>
     </div>
     {% endfor %}
+    <div class="square">
+        <div class="content">
+            <div class="table">
+                <div class="table-cell">
+                    <p class="title">Reset</p>
+                    <p class="quote">
+                        {% for player_name, _ in items.items() %}
+                            <a class="swipe" href="#!" onclick="resetPointsRequest('{{ player_name }}')">
+                                {{ player_name }}
+                            </a><br/>
+                        {% endfor %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 
