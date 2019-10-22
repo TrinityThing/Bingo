@@ -1,5 +1,4 @@
 from pony.orm import PrimaryKey, Required, Optional
-
 from draw_app.settings import db
 
 
