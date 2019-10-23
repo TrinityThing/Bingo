@@ -7,6 +7,10 @@ Pallet:
     #B1A296
  */
 
+.clickable {
+    cursor: pointer;
+}
+
 .square {
     float: left;
     position: relative;
@@ -148,7 +152,6 @@ a {
     text-decoration: none;
     color: inherit;
     position: relative;
-    cursor: pointer;
 }
 
 a.swipe::before {

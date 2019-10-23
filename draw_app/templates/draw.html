@@ -10,7 +10,7 @@
 <body>
 <div class="results">
     {% for player_name, data in items.items() %}
-        <div class="square" onclick="addPointsRequest('{{ player_name }}')">
+        <div class="square clickable" onclick="addPointsRequest('{{ player_name }}')">
         <div class="content">
             <div class="table">
                 <div class="table-cell">
@@ -29,7 +29,7 @@
                     <p class="title">Reset</p>
                     <p class="quote">
                         {% for player_name, _ in items.items() %}
-                            <a class="swipe" href="#!" onclick="resetPointsRequest('{{ player_name }}')">
+                            <a class="swipe clickable" href="#!" onclick="resetPointsRequest('{{ player_name }}')">
                                 {{ player_name }}
                             </a><br/>
                         {% endfor %}
